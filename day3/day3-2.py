@@ -5,28 +5,19 @@ lines = []
 with open("day3.txt") as f:
     lines = [line.strip() for line in f]
 
-oxygen = deepcopy(lines)
-co2 = deepcopy(lines)
+methods = [lambda a, b: a >= b, lambda a, b: a < b]
+results = []
+for method in methods:
+    idx = 0
+    l = deepcopy(lines)
+    while True:
+        keep = "1" if method(sum([int(line[idx]) for line in l]), len(l) / 2) else "0"
+        l = [line for line in l if line[idx] == keep]
+        if len(l) == 1:
+            break
+        
+        idx += 1
+    
+    results.append(int(l[0], 2))
 
-# Oxygen calc
-idx = 0
-while True:
-    keep = "1" if sum([int(line[idx]) for line in oxygen]) >= (len(oxygen) / 2) else "0"
-    oxygen = [line for line in oxygen if line[idx] == keep]
-    if len(oxygen) == 1:
-        break
-    idx += 1
-
-oxygen = int(oxygen[0], 2)
-
-# CO2 calc
-idx = 0
-while True:
-    keep = "1" if sum([int(line[idx]) for line in co2]) < (len(co2) / 2) else "0"
-    co2 = [line for line in co2 if line[idx] == keep]
-    if len(co2) == 1:
-        break
-    idx += 1
-
-co2 = int(co2[0], 2)
-print(oxygen * co2)
+print(reduce(lambda a, b: a * b, results))
