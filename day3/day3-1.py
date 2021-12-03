@@ -2,9 +2,9 @@ lines = []
 with open("day3.txt") as f:
     lines = [line.strip() for line in f]
 
-counts = [0] * 12
+counts = [0] * len(lines[0])
 for line in lines:
-    for i in range(12):
+    for i in range(len(lines[0])):
         counts[i] += int(line[i])
 
 counts = ["1" if count > len(lines) / 2 else "0" for count in counts]
