@@ -1,7 +1,6 @@
 lines = []
 with open("day2.txt") as f:
-    lines = f.readlines()
-    lines = [line.strip() for line in lines]
+    lines = [line.strip() for line in f]
 
 forward = 0
 depth = 0

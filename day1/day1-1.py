@@ -1,7 +1,6 @@
 lines = []
 with open("day1.txt") as f:
-    lines = f.readlines()
-    lines = [int(line.strip()) for line in lines]
+    lines = [int(line.strip()) for line in f]
 
 increased = 0
 for i in range(1, len(lines)):
