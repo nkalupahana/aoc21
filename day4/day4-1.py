@@ -8,11 +8,11 @@ FOUND_MARKER = -1
 
 def bingo_col(df):
     a = df.to_numpy()
-    return (a[0] == a).all(0)
+    return (FOUND_MARKER == a).all(0)
 
 def bingo_row(df):
     a = df.transpose().to_numpy()
-    return (a[0] == a).all(0)
+    return (FOUND_MARKER == a).all(0)
 
 # Read input into nums and boards (list of dataframes)
 with open("day4.txt") as f:
