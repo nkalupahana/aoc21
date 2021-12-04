@@ -6,12 +6,8 @@ boards = []
 BINGO_SIZE = 5
 FOUND_MARKER = -1
 
-def bingo_col(df):
+def bingo(df):
     a = df.to_numpy()
-    return (FOUND_MARKER == a).all(0)
-
-def bingo_row(df):
-    a = df.transpose().to_numpy()
     return (FOUND_MARKER == a).all(0)
 
 # Read input into nums and boards (list of dataframes)
@@ -32,7 +28,7 @@ def solve():
         i = 0
         while i < len(boards):
             boards[i].replace(num, FOUND_MARKER, inplace=True)
-            if np.any(bingo_col(boards[i]) + bingo_row(boards[i])):
+            if np.any(bingo(boards[i]) + bingo(boards[i].transpose())):
                 # If it's the last one, we're there!
                 if len(boards) == 1:
                     print(boards[i].replace(FOUND_MARKER, 0).sum().sum() * num)
