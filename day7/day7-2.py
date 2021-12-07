@@ -1,4 +1,3 @@
-from statistics import mean
 import numpy as np
 
 positions = []
@@ -13,4 +12,4 @@ for line in range(max(positions)):
     if diff < min:
         min, mline = diff, line
 
-print(min, mline)
+print(int(min), mline)
