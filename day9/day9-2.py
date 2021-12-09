@@ -32,6 +32,5 @@ for i in range(len(lines)):
 
         regions.append(find(i, j))
 
-
 regions.sort()
 print(reduce(lambda x,y: x * y, regions[-3:]))
